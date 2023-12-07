@@ -149,7 +149,7 @@ export function isValidHttpUrl(url: string) {
  * @param options {object}
  * @description Generate QR in page
  * */
-export function generateQRCode(elementId: string, { value, height = 15, width = 1, type = 'url'}) {
+export function generateQRCode(elementId: string, { value, height = 15, width = 1 }) {
     return new Promise((resolve, reject) => {
         const element = document.getElementById(
             elementId
