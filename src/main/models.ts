@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2019-2020. Author Hubert Formin <hformin@gmail.com>
  */
-
+import QRCode from "qrcode";
 export declare type PageSize = 'A3' | 'A4' | 'A5' | 'Legal' | 'Letter' | 'Tabloid';
 
 export declare type PaperSize = '80mm' | '78mm' | '76mm' | '57mm' | '58mm' | '44mm';
@@ -82,27 +82,27 @@ export interface PosPrintTableField {
  * @name PosPrintData
  * **/
 export interface PosPrintData {
-    /**
-     * @property type
-     * @description type data to print: 'text' | 'barCode' | 'qrcode' | 'image' | 'table'
-    */
-    type: PosPrintType;
-    value?: string;
-    // css?: any;
-    style?: PrintDataStyle;
-    width?: string;
-    height?: string;
-    fontsize?: number;       // for barcodes
-    displayValue?: boolean;  // for barcodes
-    position?: PosPrintPosition;        // for type image, barcode and qrCode; values: 'left'| 'center' | 'right'
-    path?: string;                      // image path
-    url?: string;                       // image url or base64 object url
-    tableHeader?: PosPrintTableField[] | string[],        // specify the columns in table header, to be used with type table
-    tableBody?: PosPrintTableField[][] | string[][],         //  specify the columns in table body, to be used with type table
-    tableFooter?: PosPrintTableField[] | string[],      //  specify the columns in table footer, to be used with type table
-    tableHeaderStyle?: PrintDataStyle;                // (type table), set custom style for table header
-    tableBodyStyle?: PrintDataStyle;                // (type table), set custom style for table body
-    tableFooterStyle?: PrintDataStyle;             // (type table), set custom style for table footer
+  /**
+   * @property type
+   * @description type data to print: 'text' | 'barCode' | 'qrcode' | 'image' | 'table'
+   */
+  type: PosPrintType;
+  value?: string | QRCode.QRCodeSegment[];
+  // css?: any;
+  style?: PrintDataStyle;
+  width?: string;
+  height?: string;
+  fontsize?: number; // for barcodes
+  displayValue?: boolean; // for barcodes
+  position?: PosPrintPosition; // for type image, barcode and qrCode; values: 'left'| 'center' | 'right'
+  path?: string; // image path
+  url?: string; // image url or base64 object url
+  tableHeader?: PosPrintTableField[] | string[]; // specify the columns in table header, to be used with type table
+  tableBody?: PosPrintTableField[][] | string[][]; //  specify the columns in table body, to be used with type table
+  tableFooter?: PosPrintTableField[] | string[]; //  specify the columns in table footer, to be used with type table
+  tableHeaderStyle?: PrintDataStyle; // (type table), set custom style for table header
+  tableBodyStyle?: PrintDataStyle; // (type table), set custom style for table body
+  tableFooterStyle?: PrintDataStyle; // (type table), set custom style for table footer
 }
 /**
  * @type PosPrintType

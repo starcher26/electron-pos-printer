@@ -149,19 +149,21 @@ export function isValidHttpUrl(url: string) {
  * @param options {object}
  * @description Generate QR in page
  * */
-export function generateQRCode(elementId: string, { value, height = 15, width = 1}) {
+export function generateQRCode(elementId: string, { value, height = 15, width = 1, type = 'url'}) {
     return new Promise((resolve, reject) => {
-        const element = document.getElementById(elementId) as HTMLCanvasElement,
+        const element = document.getElementById(
+            elementId
+            ) as HTMLCanvasElement,
             options = {
                 width,
                 height,
-                errorCorrectionLevel: 'H',
-                color: '#000',
+                errorCorrectionLevel: "H",
+                color: "#000",
             };
         QRCode.toCanvas(element, value, options)
             .then(resolve)
             .catch((error) => {
-                reject(error);
-            })
+            reject(error);
+            });        
     })
 }
