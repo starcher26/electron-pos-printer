@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import {PrintDataStyle} from "../main/models";
-const QRCode = require('qrcode');
+import QRCode, { QRCodeRenderersOptions } from "qrcode";
 
 
 type PageElement = HTMLElement | HTMLDivElement | HTMLImageElement;
@@ -151,19 +151,20 @@ export function isValidHttpUrl(url: string) {
  * */
 export function generateQRCode(elementId: string, { value, height = 15, width = 1 }) {
     return new Promise((resolve, reject) => {
-        const element = document.getElementById(
-            elementId
-            ) as HTMLCanvasElement,
-            options = {
-                width,
-                height,
-                errorCorrectionLevel: "H",
-                color: "#000",
-            };
+        const element = document.getElementById(elementId) as HTMLCanvasElement,
+          options = {
+            width,
+            height,
+            errorCorrectionLevel: "L",
+            type: `image/png`,
+            quality: 0.3,
+            margin: 1,
+            color: "#000",
+          } as QRCodeRenderersOptions;
         QRCode.toCanvas(element, value, options)
             .then(resolve)
             .catch((error) => {
-            reject(error);
+                reject(error);
             });        
     })
 }
