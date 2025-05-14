@@ -1,6 +1,6 @@
 {
   "name": "@starcher/electron-pos-printer",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Fork electron-pos-printer",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

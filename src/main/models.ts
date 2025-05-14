@@ -97,6 +97,7 @@ export interface PosPrintData {
   position?: PosPrintPosition; // for type image, barcode and qrCode; values: 'left'| 'center' | 'right'
   path?: string; // image path
   url?: string; // image url or base64 object url
+  format?: string; // image format
   tableHeader?: PosPrintTableField[] | string[]; // specify the columns in table header, to be used with type table
   tableBody?: PosPrintTableField[][] | string[][]; //  specify the columns in table body, to be used with type table
   tableFooter?: PosPrintTableField[] | string[]; //  specify the columns in table footer, to be used with type table
