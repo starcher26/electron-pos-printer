@@ -62,8 +62,11 @@ export function renderImageToPage(arg): Promise<HTMLElement> {
             if (!isValidHttpUrl(arg.url) && !isBase64(arg.url)) {
                 return reject(`Invalid url: ${arg.url}`);
             }
-
-            uri = arg.url;
+            if (isBase64(arg.url)) {
+                uri = `data:image/${arg.format};base64,${arg.url}`;
+            } else {
+                uri = arg.url;
+            }
         } else if (arg.path) {
             // file mut be
             try {
